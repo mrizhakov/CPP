@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:31 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/02 12:27:42 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:47:13 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class Contact {
     public:
-    std::string name;
+    std::string first_name;
     std::string last_name;
     std::string nickname;
     std::string secret;
@@ -36,6 +36,8 @@ class Phonebook {
 public:
     Phonebook(void);
     ~Phonebook(void);
+    AddContact(void);
+    SearchContact(contact_number) const;
     Contact contact_list[8];
 
     static int getNbContacts(void);

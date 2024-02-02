@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:37 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/02 12:27:59 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:49:16 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,30 @@ Contact::~Contact(void) {
     return;
 }
 
+Phonebook::AddContact(first_name, last_name, nickname, phone, secret) {
+    Contact[get_NbContacts+].first_name = first_name;
+    
+    return;
+}
+
+
 int Phonebook::_nbContacts = 0;
 
 int main(void)
 {
     Phonebook   my_phonebook;
     std::string command;
+    std::cout << "To use the Phonebook, use ADD, SEARCH or EXIT commands" << std::endl;
+    std::cin >> command;
+    while (true)
+    {
+    if (command == "EXIT")
+        return (0);
+    if (command == "ADD")
+    {
+        
+    }   
+    
     return(0);
 }
 
