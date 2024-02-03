@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrizhakov <mrizhakov@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:37 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/02 17:52:17 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:48:30 by mrizhakov        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Contact::~Contact(void) {
 }
 
 void Phonebook::AddContact(void) {
-    unsigned long long verified_phone_number;
+    //unsigned long long verified_phone_number;
     char *endptr; // Pointer to the character after the converted number
     
     std::cout << "Input contact information one line at a time: " << std::endl;
@@ -54,11 +54,11 @@ void Phonebook::AddContact(void) {
     std::cin >> contact_list[getNbContacts()].nickname;
     std::cout << "4. Phone number" << std::endl;
     std::cin >> contact_list[getNbContacts()].phone_number;
-    verified_phone_number = strtoull(contact_list[getNbContacts()].phone_number.c_str(), &endptr, 10);
+    strtoull(contact_list[getNbContacts()].phone_number.c_str(), &endptr, 10);
     while (*endptr != '\0') {
         std::cout << "Invalid phone number, try again" << std::endl;
         std::cin >> contact_list[getNbContacts()].phone_number;
-        verified_phone_number = strtoull(contact_list[getNbContacts()].phone_number.c_str(), &endptr, 10);
+        strtoull(contact_list[getNbContacts()].phone_number.c_str(), &endptr, 10);
     }
     std::cout << "5. Darkest secret" << std::endl;
     std::cin >> contact_list[getNbContacts()].secret;
