@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:31 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/02 16:22:45 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:03:52 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include<iostream>
 # include<string>
-
 
 class Contact {
     public:
@@ -26,37 +25,28 @@ class Contact {
     std::string phone_number;
     Contact(void);
     ~Contact(void);
-
-    
 };
-
 
 class Phonebook {
 
 public:
     Phonebook(void);
     ~Phonebook(void);
-    void AddContact(void);
-    void DisplayContact(unsigned int search_number) const;
-
-    // SearchContact(contact_number) const;
-    Contact contact_list[8];
-
-    static int getNbContacts(void);
-    void incrementContacts(void);
-    
+    void        AddContact(void);
+    void        DisplayContact(unsigned int search_number) const;
+    void        PressEnterToContinue(void);
+    Contact     contact_list[8];
+    static int  getNbContacts(void);
+    void        incrementContacts(void);
 
 private:
     static int _nbContacts;
-
 };
 
 int Phonebook::getNbContacts(void) {
     return Phonebook::_nbContacts;
 }
 
-
 int Phonebook::_nbContacts = 0;
-
 
 #endif

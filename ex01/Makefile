@@ -3,24 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrizhakov <mrizhakov@student.42.fr>        +#+  +:+       +#+         #
+#    By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 17:37:29 by mrizhakov         #+#    #+#              #
-#    Updated: 2024/02/03 15:44:15 by mrizhakov        ###   ########.fr        #
+#    Updated: 2024/02/03 16:40:04 by mrizakov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-SRC = Phonebook.class.cpp / / 
+SRC = Phonebook.class.cpp
 OBJ = $(SRC:.cpp=.o)
 EXECUTABLE = Phonebook
 
-${EXECUTABLE}: Phonebook.class.o
+all: ${EXECUTABLE}
+
+${EXECUTABLE}: ${OBJ}
 	${CC} ${FLAGS} $^ -o $@
 
-Phonebook.class.o: ${SRC}
+${OBJ}: ${SRC}
 	${CC} ${FLAGS} -c $^
 
 clean:
-	rm *.o Phonebook
+	rm -f ${OBJ} 
+
+fclean: clean
+	rm -f ${EXECUTABLE}
+
+re: fclean all
+
+.PHONY: clean fclean
