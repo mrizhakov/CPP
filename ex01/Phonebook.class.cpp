@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:37 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/03 17:02:59 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:12:46 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void Phonebook::incrementContacts(void) {
 }
 
 void Phonebook::DisplayContact(unsigned int search_number) const {
-    std::cout << "|Index     |First name|Last name | Nickname |" << std::endl;
+    
 
     std::cout << "|" << std::setw(10) << search_number  << "|";
     if (contact_list[search_number].first_name.size() > 10)
@@ -117,7 +117,6 @@ int main(void)
         std::cout << "1. ADD" << std::endl;
         std::cout << "2. SEARCH" << std::endl;
         std::cout << "3. EXIT" << std::endl;
-        std::cout << "4. DISPLAY ALL" << std::endl;
         std::cin >> command;
 
         if (command == "EXIT" || command == "3")
@@ -131,27 +130,31 @@ int main(void)
         else if (command == "SEARCH" || command == "2")
         {
             system("clear");
+            i = 0;
+            std::cout << "|Index     |First name|Last name | Nickname |" << std::endl;
+            while (i != 8)
+            {
+                my_phonebook.DisplayContact(i);
+                i++;
+            }
             std::cout << "Input the number of the contact you would like to display: " << std::endl;
             std::cin >> search_number;
+            system("clear");
             while (!(search_number >= 0 && search_number <= 7))
             {
                 std::cout << "This phonebook has only up to 8 contacts, please input numbers 0-7 (yes, this a 0-based phonebook): " << std::endl;
                 std::cin >> search_number;
             }
             if (search_number >= 0 && search_number <= 7)
-                my_phonebook.DisplayContact(search_number);
-            search_number = 0;
-            my_phonebook.PressEnterToContinue();
-        }
-        else if (command == "DISPLAY ALL" || command == "4")
-        {
-            system("clear");
-            i = 0;
-            while (i != 8)
             {
-                my_phonebook.DisplayContact(i);
-                i++;
+                std::cout << "Contact " << search_number << " info:" << std::endl;
+                std::cout << "First name: " << my_phonebook.contact_list[search_number].first_name << std::endl;
+                std::cout << "Last name: " << my_phonebook.contact_list[search_number].last_name << std::endl;
+                std::cout << "Nickname: " << my_phonebook.contact_list[search_number].nickname << std::endl;
+                std::cout << "Phone number: " << my_phonebook.contact_list[search_number].phone_number << std::endl;
+                std::cout << "Darkest secret: " << my_phonebook.contact_list[search_number].secret << std::endl;                
             }
+            search_number = 0;
             my_phonebook.PressEnterToContinue();
         }
         else
