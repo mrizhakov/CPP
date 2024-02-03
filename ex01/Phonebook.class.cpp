@@ -6,7 +6,7 @@
 /*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:13:37 by mrizakov          #+#    #+#             */
-/*   Updated: 2024/02/03 18:12:46 by mrizakov         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:40:02 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,28 +131,34 @@ int main(void)
         {
             system("clear");
             i = 0;
-            std::cout << "|Index     |First name|Last name | Nickname |" << std::endl;
+            std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
             while (i != 8)
             {
                 my_phonebook.DisplayContact(i);
                 i++;
             }
             std::cout << "Input the number of the contact you would like to display: " << std::endl;
-            std::cin >> search_number;
-            system("clear");
-            while (!(search_number >= 0 && search_number <= 7))
+            while (true)
             {
-                std::cout << "This phonebook has only up to 8 contacts, please input numbers 0-7 (yes, this a 0-based phonebook): " << std::endl;
-                std::cin >> search_number;
-            }
-            if (search_number >= 0 && search_number <= 7)
-            {
-                std::cout << "Contact " << search_number << " info:" << std::endl;
-                std::cout << "First name: " << my_phonebook.contact_list[search_number].first_name << std::endl;
-                std::cout << "Last name: " << my_phonebook.contact_list[search_number].last_name << std::endl;
-                std::cout << "Nickname: " << my_phonebook.contact_list[search_number].nickname << std::endl;
-                std::cout << "Phone number: " << my_phonebook.contact_list[search_number].phone_number << std::endl;
-                std::cout << "Darkest secret: " << my_phonebook.contact_list[search_number].secret << std::endl;                
+                if (!(std::cin >> search_number))
+                {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Invalid input, try again" << std::endl;
+                }
+                else if(!(search_number >= 0 && search_number <= 7))
+                    std::cout << "This phonebook has only up to 8 contacts, please input numbers 0-7 (yes, this a 0-based phonebook): " << std::endl;
+                else 
+                {
+                    system("clear");
+                    std::cout << "Contact " << search_number << " info:" << std::endl;
+                    std::cout << "First name: " << my_phonebook.contact_list[search_number].first_name << std::endl;
+                    std::cout << "Last name: " << my_phonebook.contact_list[search_number].last_name << std::endl;
+                    std::cout << "Nickname: " << my_phonebook.contact_list[search_number].nickname << std::endl;
+                    std::cout << "Phone number: " << my_phonebook.contact_list[search_number].phone_number << std::endl;
+                    std::cout << "Darkest secret: " << my_phonebook.contact_list[search_number].secret << std::endl;                
+                    break;
+                }
             }
             search_number = 0;
             my_phonebook.PressEnterToContinue();
